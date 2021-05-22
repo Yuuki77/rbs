@@ -1744,4 +1744,12 @@ type foo = Integer
       end
     end
   end
+
+  def test_interface_name
+    assert_raises RBS::Parser::LexerError do
+      Parser.parse_signature(<<-RBS)
+interface _foo end
+      RBS
+    end
+  end
 end

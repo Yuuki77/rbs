@@ -1713,11 +1713,11 @@ def next_token
     new_token(:tIVAR, input.matched.to_sym)
   when input.scan(/@@[a-zA-Z_]\w*/)
     new_token(:tCLASSVAR, input.matched.to_sym)
-  when input.scan(/_[a-zA-Z]\w*\b/)
+  when input.scan(/_[A-Z]\w*\b/)
     new_token(:tINTERFACEIDENT)
   when input.scan(/[A-Z]\w*\b/)
     new_token(:tUIDENT)
-  when input.scan(/[a-z_]\w*\b/)
+  when input.scan(/[a-z]\w*\b/)
     new_token(:tLIDENT)
   when input.scan(/"(\\"|[^"])*"/)
     s = input.matched.yield_self {|s| s[1, s.length - 2] }
